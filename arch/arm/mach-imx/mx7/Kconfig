@@ -41,6 +41,14 @@ config TARGET_MX7DSABRESD
 	select MX7D
 	imply CMD_DM
 
+config TARGET_MX7DSENZACARTA
+	bool "mx7dsenzacarta"
+	select BOARD_LATE_INIT
+	select DM
+	select DM_THERMAL
+	select MX7D
+	imply CMD_DM
+
 config TARGET_MX7D_12X12_LPDDR3_ARM2
 	bool "Support mx7d_12x12_lpddr3_arm2"
 	select BOARD_LATE_INIT
@@ -112,6 +120,7 @@ config SYS_SOC
 
 source "board/compulab/cl-som-imx7/Kconfig"
 source "board/freescale/mx7dsabresd/Kconfig"
+source "board/senzacarta/mx7dsenzacarta/Kconfig"
 source "board/freescale/mx7d_12x12_lpddr3_arm2/Kconfig"
 source "board/freescale/mx7d_12x12_ddr3_arm2/Kconfig"
 source "board/freescale/mx7d_19x19_ddr3_arm2/Kconfig"
