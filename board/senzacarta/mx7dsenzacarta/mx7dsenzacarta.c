@@ -469,7 +469,7 @@ static void setup_epdc_power(void)
 				MUX_PAD_CTRL(EPDC_PAD_CTRL));
 	/* Set as output */
 	gpio_request(IMX_GPIO_NR(2, 30), "epdc_pwr_ctl0");
-	gpio_direction_output(IMX_GPIO_NR(2, 30), 1);
+	gpio_direction_output(IMX_GPIO_NR(2, 30), 0);
 }
 
 static void epdc_enable_pins(void)
