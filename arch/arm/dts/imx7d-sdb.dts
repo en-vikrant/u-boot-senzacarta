@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0+
 /*
  * Copyright 2017 NXP
+ *
+ * modified for senzacarta project
  */
 
 /dts-v1/;
@@ -173,24 +175,6 @@
 	pinctrl-0 = <&pinctrl_ecspi3 &pinctrl_ecspi3_cs>;
 	cs-gpios = <&gpio5 9 GPIO_ACTIVE_HIGH>;
 	status = "okay";
-
-	tsc2046@0 {
-		compatible = "ti,tsc2046";
-		reg = <0>;
-		spi-max-frequency = <1000000>;
-		pinctrl-names ="default";
-		pinctrl-0 = <&pinctrl_tsc2046_pendown>;
-		interrupt-parent = <&gpio2>;
-		interrupts = <29 0>;
-		pendown-gpio = <&gpio2 29 GPIO_ACTIVE_HIGH>;
-		ti,x-min = /bits/ 16 <0>;
-		ti,x-max = /bits/ 16 <0>;
-		ti,y-min = /bits/ 16 <0>;
-		ti,y-max = /bits/ 16 <0>;
-		ti,pressure-max = /bits/ 16 <0>;
-		ti,x-plate-ohms = /bits/ 16 <400>;
-		wakeup-source;
-	};
 };
 
 &clks {
@@ -1054,13 +1038,6 @@
 				MX7D_PAD_GPIO1_IO13__GPIO1_IO13	0x59
 			>;
 		};
-
-		pinctrl_tsc2046_pendown: tsc2046_pendown {
-			fsl,pins = <
-				MX7D_PAD_EPDC_BDR1__GPIO2_IO29		0x59
-			>;
-		};
-
 
 		pinctrl_sii902x: hdmigrp-1 {
 			fsl,pins = <
