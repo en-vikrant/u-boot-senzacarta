@@ -8,7 +8,7 @@
 #include "imx7d.dtsi"
 
 / {
-	model = "Freescale i.MX7 SabreSD Board";
+	model = "i.MX7D SenzaCarta Board";
 	compatible = "fsl,imx7d-sdb", "fsl,imx7d";
 
 	aliases {
@@ -85,6 +85,7 @@
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
 		gpio = <&gpio2 14 GPIO_ACTIVE_LOW>;
+		status = "disabled";
 	};
 
 	reg_sd1_vmmc: regulator-sd1-vmmc {
@@ -211,12 +212,12 @@
 
 &epdc {
 	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_epdc0 &pinctrl_enet2_epdc0_en>;
+	pinctrl-0 = <&pinctrl_epdc0>;
 	V3P3-supply = <&V3P3_reg>;
 	VCOM-supply = <&VCOM_reg>;
 	DISPLAY-supply = <&DISPLAY_reg>;
-	en-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
-	status = "disabled";
+	/*en-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;*/
+	status = "okay";
 };
 
 &epxp {
@@ -273,19 +274,19 @@
 	phy-mode = "rgmii";
 	phy-handle = <&ethphy1>;
 	fsl,magic-packet;
-	status = "okay";
+	status = "disabled";
 };
 
 &flexcan2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_flexcan2>;
 	xceiver-supply = <&reg_can2_3v3>;
-	status = "okay";
+	status = "disabled";
 };
 
 &mipi_csi {
 	clock-frequency = <240000000>;
-	status = "okay";
+	status = "disabled";
 	port {
 		mipi_sensor_ep: endpoint1 {
 			remote-endpoint = <&ov5640_mipi_ep>;
@@ -443,7 +444,7 @@
 		mode_str ="1280x720M@60";
 		bits-per-pixel = <16>;
 		reg = <0x39>;
-		status = "okay";
+		status = "disabled";
 	};
 
 	max17135: max17135@48 {
@@ -664,7 +665,7 @@
 	pinctrl-0 = <&pinctrl_sim1_1>;
 	port = <0>;
 	sven_low_active;
-	status = "okay";
+	status = "disabled";
 };
 
 
@@ -684,7 +685,7 @@
 	/* for DTE mode, add below change */
 	/* fsl,dte-mode; */
 	/* pinctrl-0 = <&pinctrl_uart5dte>; */
-	status = "okay";
+	status = "disabled";
 };
 
 &uart6 {
@@ -868,32 +869,32 @@
 
 		pinctrl_epdc0: epdcgrp0 {
                         fsl,pins = <
-				MX7D_PAD_EPDC_DATA00__EPDC_DATA0  0x2
-				MX7D_PAD_EPDC_DATA01__EPDC_DATA1  0x2
-				MX7D_PAD_EPDC_DATA02__EPDC_DATA2  0x2
-				MX7D_PAD_EPDC_DATA03__EPDC_DATA3  0x2
-				MX7D_PAD_EPDC_DATA04__EPDC_DATA4  0x2
-				MX7D_PAD_EPDC_DATA05__EPDC_DATA5  0x2
-				MX7D_PAD_EPDC_DATA06__EPDC_DATA6  0x2
-				MX7D_PAD_EPDC_DATA07__EPDC_DATA7  0x2
-				MX7D_PAD_EPDC_DATA08__EPDC_DATA8  0x2
-				MX7D_PAD_EPDC_DATA09__EPDC_DATA9  0x2
-				MX7D_PAD_EPDC_DATA10__EPDC_DATA10 0x2
-				MX7D_PAD_EPDC_DATA11__EPDC_DATA11 0x2
-				MX7D_PAD_EPDC_DATA12__EPDC_DATA12 0x2
-				MX7D_PAD_EPDC_DATA13__EPDC_DATA13 0x2
-				MX7D_PAD_EPDC_DATA14__EPDC_DATA14 0x2
-				MX7D_PAD_EPDC_DATA15__EPDC_DATA15 0x2
-				MX7D_PAD_EPDC_SDCLK__EPDC_SDCLK   0x2
-				MX7D_PAD_EPDC_SDLE__EPDC_SDLE     0x2
-				MX7D_PAD_EPDC_SDOE__EPDC_SDOE     0x2
-				MX7D_PAD_EPDC_SDSHR__EPDC_SDSHR   0x2
-				MX7D_PAD_EPDC_SDCE0__EPDC_SDCE0   0x2
-				MX7D_PAD_EPDC_SDCE1__EPDC_SDCE1   0x2
-				MX7D_PAD_EPDC_GDCLK__EPDC_GDCLK   0x2
-				MX7D_PAD_EPDC_GDOE__EPDC_GDOE     0x2
-				MX7D_PAD_EPDC_GDRL__EPDC_GDRL     0x2
-				MX7D_PAD_EPDC_GDSP__EPDC_GDSP     0x2
+				MX7D_PAD_EPDC_DATA00__EPDC_DATA0  0x80000000
+				MX7D_PAD_EPDC_DATA01__EPDC_DATA1  0x80000000
+				MX7D_PAD_EPDC_DATA02__EPDC_DATA2  0x80000000
+				MX7D_PAD_EPDC_DATA03__EPDC_DATA3  0x80000000
+				MX7D_PAD_EPDC_DATA04__EPDC_DATA4  0x80000000
+				MX7D_PAD_EPDC_DATA05__EPDC_DATA5  0x80000000
+				MX7D_PAD_EPDC_DATA06__EPDC_DATA6  0x80000000
+				MX7D_PAD_EPDC_DATA07__EPDC_DATA7  0x80000000
+				MX7D_PAD_EPDC_DATA08__EPDC_DATA8  0x80000000
+				MX7D_PAD_EPDC_DATA09__EPDC_DATA9  0x80000000
+				MX7D_PAD_EPDC_DATA10__EPDC_DATA10 0x80000000
+				MX7D_PAD_EPDC_DATA11__EPDC_DATA11 0x80000000
+				MX7D_PAD_EPDC_DATA12__EPDC_DATA12 0x80000000
+				MX7D_PAD_EPDC_DATA13__EPDC_DATA13 0x80000000
+				MX7D_PAD_EPDC_DATA14__EPDC_DATA14 0x80000000
+				MX7D_PAD_EPDC_DATA15__EPDC_DATA15 0x80000000
+				MX7D_PAD_EPDC_SDCLK__EPDC_SDCLK   0x80000000
+				MX7D_PAD_EPDC_SDLE__EPDC_SDLE     0x80000000
+				MX7D_PAD_EPDC_SDOE__EPDC_SDOE     0x80000000
+				MX7D_PAD_EPDC_SDSHR__EPDC_SDSHR   0x80000000
+				MX7D_PAD_EPDC_SDCE0__EPDC_SDCE0   0x80000000
+				MX7D_PAD_EPDC_SDCE1__EPDC_SDCE1   0x80000000
+				MX7D_PAD_EPDC_GDCLK__EPDC_GDCLK   0x80000000
+				MX7D_PAD_EPDC_GDOE__EPDC_GDOE     0x80000000
+				MX7D_PAD_EPDC_GDRL__EPDC_GDRL     0x80000000
+				MX7D_PAD_EPDC_GDSP__EPDC_GDSP     0x80000000
                         >;
                 };
 

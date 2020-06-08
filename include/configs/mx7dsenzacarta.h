@@ -138,7 +138,7 @@
 	"console=ttymxc0\0" \
 	"fdt_high=0xffffffff\0" \
 	"initrd_high=0xffffffff\0" \
-	"fdt_file=undefined\0" \
+	"fdt_file=imx7d-senzacarta.dtb\0" \
 	"fdt_addr=0x83000000\0" \
 	"tee_addr=0x84000000\0" \
 	"tee_file=uTee-7dsdb\0" \
@@ -150,7 +150,7 @@
 	"mmcroot=" CONFIG_MMCROOT " rootwait rw\0" \
 	"mmcautodetect=yes\0" \
 	"mmcargs=setenv bootargs console=${console},${baudrate} " \
-		"root=${mmcroot}\0" \
+		"root=${mmcroot} epdc video=mxcepdcfb:ES103TC1C1,bpp=16\0" \
 	"loadbootscript=" \
 		"fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
 	"bootscript=echo Running bootscript from mmc ...; " \
@@ -313,7 +313,7 @@
 #endif
 
 /* #define CONFIG_SPLASH_SCREEN*/
-#define CONFIG_MXC_EPDC
+/*#define CONFIG_MXC_EPDC*/
 
 /*
  * SPLASH SCREEN Configs
@@ -322,7 +322,7 @@
 /*
  * Framebuffer and LCD
  */
-#define CONFIG_SPLASH_SCREEN
+/*#define CONFIG_SPLASH_SCREEN*/
 
 #undef LCD_TEST_PATTERN
 /* #define CONFIG_SPLASH_IS_IN_MMC			1 */
@@ -344,12 +344,6 @@
 #define QSPI0_AMBA_BASE			QSPI0_ARB_BASE_ADDR
 #endif
 
-#if defined(CONFIG_ANDROID_SUPPORT)
-#include "mx7dsabresdandroid.h"
-#elif defined(CONFIG_ANDROID_THINGS_SUPPORT)
-#include "mx7dsabresd_androidthings.h"
-#else
 #define CONFIG_USBD_HS
-#endif
 
 #endif	/* __CONFIG_H */
